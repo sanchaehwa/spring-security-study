@@ -1,37 +1,22 @@
-HELP.md
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
-
-### IntelliJ IDEA ###
-.idea
-*.iws
+# IntelliJ 설정
+.idea/
 *.iml
-*.ipr
+
+# Gradle
+.gradle/
+build/
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+!gradle/wrapper/gradle-wrapper.jar
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# 기타 임시 폴더
+data/
 
-### VS Code ###
-.vscode/
+# 로그 파일
+*.log
+
+# 운영체제 관련
+.DS_Store
+Thumbs.db
+
+# 모든 .gitattributes 무시 (루트 + 하위 폴더 포함)
+**/.gitattributes
