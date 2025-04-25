@@ -24,15 +24,17 @@ public class SecurityConfig {
         http
                 //authorizeHttpRequests : HttpSecurity 객체 안에서 요청별로 인가 규칙을 정의하는 빌더 매서드
                 .authorizeHttpRequests((auth) -> auth //.requestMatchers : 경로에 특정한 작업을 진행하고 싶을때 설정
-                        .requestMatchers("/","/login").permitAll() //permitAll : 어떤 사용자도 접근할 . 있음
+                        .requestMatchers("/login","/join").permitAll() //permitAll : 어떤 사용자도 접근할 . 있음
                         .requestMatchers("/admin").hasRole("ADMIN")
-                        .requestMatchers("/my/**").hasAnyRole("ADMIN","USER")
+                        .requestMatchers("/my/**","/loginSuccess").hasAnyRole("ADMIN","USER")
                         .anyRequest().authenticated() //다른 경로는 로그인만하면 접근 가능하게
                 );
         //admin 이나 로그인하면 접근 가능하게 설정해두고, 만약 로그인이 안된 사용자다 하면 로그인폼으로 리다렉트되게 설정
         http
                 .formLogin((auth )-> auth.loginPage("/login")
                         .loginProcessingUrl("/loginProc")
+                        .defaultSuccessUrl("/loginSuccess", true) // 로그인 성공 시 이동 경로
+                        .failureUrl("/login?error=true") // 실패 시 이 경로로 이동
                         .permitAll());
         //csrf 토큰을 보내지않으면 로그인 안되서 일단은 disable
         http
