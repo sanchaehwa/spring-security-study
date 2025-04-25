@@ -4,6 +4,8 @@ package com.example.testsecurity.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,6 +20,17 @@ public class SecurityConfig {
 
         return new BCryptPasswordEncoder();
     }
+//계층 권한 설정
+    @Bean
+    public RoleHierarchy roleHierarchy() {
+        RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
+        roleHierarchy.setHierarchy("ROLE_ADMIN > ROLE_USER");
+        return roleHierarchy;
+    }
+
+
+
+
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception { //HttpSecurity : 어떤 요청 경로에 어떤 인증/인가 정책에 적용할지
