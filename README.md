@@ -13,7 +13,7 @@
 Spring Security 는 세션 기반 인증, 서버 상태 관리 - JWT는 토큰 기반 인증. 
 
 
-### Spring Security기 적용된 로그인 동작 원리
+### Spring Security가 적용된 로그인 동작 원리
 ![로그인/회원가입 동작 원리 구조도](https://github.com/user-attachments/assets/a85a04cd-99fe-48d0-a67f-062e3d6b915b)
 
 - 로그인 
